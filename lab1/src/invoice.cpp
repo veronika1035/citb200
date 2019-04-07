@@ -1,8 +1,16 @@
 #include "invoice.h"
+#include "item.h"
+#include <vector>
+
  void Invoice::add(Product product, int quantity){
-     this->products.push_back(product);     
+     Item item(product, quantity);
+     this->items.push_back(item);     
  }
 
     vector<Product> Invoice::getProducts(){
-     return this->products;
+     vector<Product> products;
+     for (auto item : items) {
+         products.push_back(item.getProduct());
+     }
+     return products;
  }
